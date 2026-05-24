@@ -32,4 +32,5 @@ This file is the canonical roster of expert personas available to the Subutai or
 - Add security review when the task affects inputs, trust boundaries, credentials, auth, network access, data protection, or externally reachable surfaces.
 - Add SDET for changes that alter user flows, integrations, complex business logic, or regression-sensitive behavior.
 - Add CI/CD or Linux automation when delivery depends on pipelines, scripts, environment setup, local tooling, or operational automation.
+- Add Linux automation and SDET together for tmux or terminal UX work when layout or operator flow needs headless validation rather than manual inspection alone.
 - Add data, API, performance, frontend, or SRE specialists only when their specialty is load-bearing for the requested outcome.

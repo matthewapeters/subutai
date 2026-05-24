@@ -4,7 +4,7 @@
 
 **subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Technical Program Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, builds a short delivery plan, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
 
-The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, and API and integration design.
+The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling.
 
 Repository URLs:
 
@@ -19,13 +19,23 @@ Repository URLs:
 4. Use structured handoffs and progress updates instead of chatty status noise.
 5. Keep ephemeral run artifacts separate from reusable knowledge.
 
+For bug and issue work, Subutai now includes a dedicated lifecycle:
+
+1. `issue-intake`
+2. `issue-reproduce-evidence`
+3. `issue-investigate`
+4. `issue-regression-tests`
+5. `issue-fix-close`
+6. `issue-pr-handoff`
+7. `issue-verify-release`
+
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
 | `.apm/instructions/` | Always-on orchestrator behavior: triage, planning gate, progress/conflict handling, artifact rules, and expert packet contract |
-| `.apm/agents/` | Specialist agent definitions used by the orchestrator |
-| `.apm/context/` | Source requirements, expert roster, and handoff templates |
+| `.apm/agents/` | Specialist agent definitions and issue-workflow chatmodes used by the orchestrator |
+| `.apm/context/` | Source requirements, expert roster, handoff templates, and issue-workflow routing guidance |
 | `.subutai/knowledge/` | Curated durable knowledge artifacts for future reuse |
 | `apm.yml` | Package metadata and target configuration |
 | `pyproject.toml` | Local Python setup with the `apm-cli` dev dependency |
@@ -67,6 +77,24 @@ Generate the Copilot-targeted outputs when ready:
 ```bash
 ./.venv/bin/apm compile --target copilot
 ```
+
+### Use the issue workflow
+
+Subutai’s issue lifecycle is packaged as explicit agent/chatmode entrypoints under `.apm/agents/`. Use them when the user is working a bug, regression, flaky failure, or tracked issue rather than improvising a one-off sequence.
+
+The workflow is designed to move in order:
+
+```text
+issue-intake
+  -> issue-reproduce-evidence
+  -> issue-investigate
+  -> issue-regression-tests
+  -> issue-fix-close
+  -> issue-pr-handoff
+  -> issue-verify-release
+```
+
+The orchestrator should keep ownership of sequencing and approvals, and involve the relevant specialists at each phase. The included workflow guidance covers both **GitHub.com Projects** and **Atlassian Projects** so the same flow can drive GitHub Issues and PRs or Jira and Bitbucket handoffs.
 
 ## Why the name?
 
