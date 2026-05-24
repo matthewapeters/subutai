@@ -4,7 +4,7 @@
 
 **subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Technical Program Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, builds a short delivery plan, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
 
-The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
+The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, APM package design and versioning, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
 
 Repository URLs:
 
@@ -78,6 +78,73 @@ Generate the Copilot-targeted outputs when ready:
 ```bash
 ./.venv/bin/apm compile --target copilot
 ```
+
+### Release or test this package
+
+For a normal GitHub-hosted APM package like Subutai, the practical release unit is a
+**git ref**. There is no top-level `apm publish` command for this workflow.
+
+The usual flow is:
+
+1. Update the package source under `.apm/`.
+2. If you are tracking package versions, bump `version:` in `apm.yml` and update `CHANGELOG.md`.
+3. Regenerate any compiled artifacts you want to ship:
+
+   ```bash
+   ./.venv/bin/apm compile --validate --target copilot
+   ./.venv/bin/apm compile --target copilot
+   ```
+
+4. Commit the source changes plus generated artifacts such as `AGENTS.md` and `.github/copilot-instructions.md`.
+5. Create and push a tag for the release you want consumers to test:
+
+   ```bash
+   git tag v0.0.1-test.1
+   git push origin v0.0.1-test.1
+   ```
+
+Consumers can then install that exact release candidate by ref:
+
+```bash
+apm install matthewapeters/subutai#v0.0.1-test.1 --target copilot
+```
+
+You can also point APM at a branch while iterating:
+
+```bash
+apm install matthewapeters/subutai#main --target copilot
+```
+
+To see which remote refs are currently available:
+
+```bash
+apm view matthewapeters/subutai versions
+```
+
+If you want a packaged artifact instead of a GitHub ref, build one with:
+
+```bash
+./.venv/bin/apm pack
+```
+
+`apm marketplace publish` is a separate workflow for repositories that maintain a
+configured `marketplace:` block in `apm.yml`; it is not required just to ship a new
+Git tag of this package for testing.
+
+### Semantic versioning for an APM package
+
+Subutai now includes an `apm-expert` persona for package-authoring and release-policy
+questions. The versioning contract it should apply is:
+
+| Version | Use when | Examples in an APM package |
+| --- | --- | --- |
+| **Major** | The consumer-facing package contract changes incompatibly | Rename or remove specialist entrypoints, change staged workflow phases, break install layout, or substantially change default orchestrator behavior |
+| **Minor** | You add backward-compatible capability | Add a new expert persona, add a new workflow, add a new target, or expand orchestration behavior compatibly |
+| **Patch** | You make backward-compatible fixes or clarifications | Refine instructions, fix routing or generated outputs, tighten wording, or update docs without changing the advertised package contract |
+
+For Subutai specifically, treat the public contract as the default orchestrator
+behavior, named expert/workflow entrypoints, staged issue lifecycle, and generated
+target outputs that consumers install and rely on.
 
 ### Use the issue workflow
 

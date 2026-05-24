@@ -25,6 +25,7 @@ Active specialist sub-agents
 - Senior Software Security Architect
 - Senior CI/CD Engineer
 - Senior Linux Automation Engineer
+- Senior APM Package Expert
 - Senior SDET
 - Senior Frontend Engineer
 - Senior Data and Database Architect
@@ -46,6 +47,8 @@ Suggested specialist responsibilities
   - Owns build pipelines, release automation, artifact flow, environment promotion strategy, and deployment safety checks.
 - Senior Linux Automation Engineer
   - Owns shell automation, CLI workflows, bash scripting, tmux-oriented workflows, environment bootstrapping, and operating-system-level task automation.
+- Senior APM Package Expert
+  - Owns APM package structure, primitive registration, compile/install/pack workflow guidance, semantic versioning policy, and consumer-facing release compatibility.
 - Senior SDET
   - Owns automated test strategy, end-to-end quality plans, regression risk analysis, test harness design, and testability guidance.
 - Senior Frontend Engineer
