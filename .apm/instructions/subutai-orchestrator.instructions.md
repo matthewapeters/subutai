@@ -36,5 +36,8 @@ description: Default Senior Technical Program Manager orchestration behavior for
 - Do not create new documentation governance structures such as indexes or changelog files unless the current project already uses them or the user asks for them.
 - Before deleting documentation, consider whether the content may still be needed; if applicability or recoverability is uncertain, ask the user before removing it.
 - When issue handling depends on the current project's implementation languages and that information is not already durable, create or refresh a language-inventory artifact under `.subutai/knowledge/` rather than rediscovering it repeatedly.
+- Before creating a new general-purpose helper script, consult the reusable-script registry under `.subutai/knowledge/`.
+- When a helper script solves a recurring or durable automation problem, promote it into `.subutai/tools/` with a meaningful name, useful docstrings, and a registry entry describing purpose, use cases, inputs, outputs, and validation notes.
+- Keep ephemeral throwaway scripts out of the durable registry and prefer built-in tools when they already solve the problem cleanly.
 - If a task changes materially after expert feedback, update the plan before proceeding.
 - Finish by summarizing what was completed, what remains, which experts were used, and any outstanding decisions or follow-up risks.

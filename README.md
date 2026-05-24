@@ -4,7 +4,7 @@
 
 **subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Technical Program Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, builds a short delivery plan, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
 
-The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling.
+The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
 
 Repository URLs:
 
@@ -35,8 +35,9 @@ For bug and issue work, Subutai now includes a dedicated lifecycle:
 | --- | --- |
 | `.apm/instructions/` | Always-on orchestrator behavior: triage, planning gate, progress/conflict handling, artifact rules, and expert packet contract |
 | `.apm/agents/` | Specialist agent definitions and issue-workflow chatmodes used by the orchestrator |
-| `.apm/context/` | Source requirements, expert roster, handoff templates, and issue-workflow routing guidance |
-| `.subutai/knowledge/` | Curated durable knowledge artifacts for future reuse |
+| `.apm/context/` | Source requirements, expert roster, handoff templates, issue-workflow routing guidance, and reusable-script policy |
+| `.subutai/knowledge/` | Curated durable knowledge artifacts such as issue or language guidance and the reusable-script registry |
+| `.subutai/tools/` | Reusable helper scripts promoted from recurring agent-authored automation |
 | `apm.yml` | Package metadata and target configuration |
 | `pyproject.toml` | Local Python setup with the `apm-cli` dev dependency |
 
@@ -95,6 +96,17 @@ issue-intake
 ```
 
 The orchestrator should keep ownership of sequencing and approvals, and involve the relevant specialists at each phase. The included workflow guidance covers both **GitHub.com Projects** and **Atlassian Projects** so the same flow can drive GitHub Issues and PRs or Jira and Bitbucket handoffs.
+
+### Use reusable helper scripts
+
+When Subutai has to create automation for its own work, it should treat recurring script patterns as reusable assets instead of re-creating them repeatedly.
+
+- Store reusable scripts under `.subutai/tools/`
+- Document them with clear names and useful docstrings
+- Register them in `.subutai/knowledge/reusable-script-registry.md`
+- Prefer the registry before inventing a new general-purpose helper
+
+This is especially useful for reliability-oriented automation such as multiline file generation, quoting-safe content emission, or other cases where brittle shell one-liners tend to fail.
 
 ## Why the name?
 
