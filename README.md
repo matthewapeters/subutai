@@ -6,6 +6,11 @@
 
 The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, SDET, frontend, data and databases, SRE and observability, performance and scalability, and API and integration design.
 
+Repository URLs:
+
+- https://github.com/matthewapeters/subutai
+- git@github.com:matthewapeters/subutai.git
+
 ## How it works
 
 1. Triage each request as `trivial`, `moderate`, or `complex`.
@@ -29,10 +34,18 @@ The package implements orchestration as always-on instructions and keeps special
 
 ### Install into a Copilot-targeted project
 
-With the APM CLI available, install this package from a local checkout:
+With the APM CLI available, install this package from GitHub:
 
 ```bash
-apm install /path/to/subutai --target copilot
+apm install matthewapeters/subutai --target copilot
+```
+
+If you want a local checkout first:
+
+```bash
+git clone git@github.com:matthewapeters/subutai.git
+cd subutai
+apm install . --target copilot
 ```
 
 ### Develop or validate this package locally
