@@ -2,9 +2,9 @@
 
 [![Portrait of Subutai from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Subudei.jpg/250px-Subudei.jpg)](https://en.wikipedia.org/wiki/Subutai)
 
-**subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Technical Program Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, builds a short delivery plan, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
+**subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Engineering Delivery Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, drives work toward user-observable value, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
 
-The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, APM package design and versioning, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
+The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, Senior Technical Program Management, APM package design and versioning, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
 
 Repository URLs:
 
@@ -14,10 +14,18 @@ Repository URLs:
 ## How it works
 
 1. Triage each request as `trivial`, `moderate`, or `complex`.
-2. Create a brief plan and obtain approval before substantive execution.
-3. Delegate only to specialists whose judgment materially changes the outcome.
-4. Use structured handoffs and progress updates instead of chatty status noise.
-5. Keep ephemeral run artifacts separate from reusable knowledge.
+2. Deliver the smallest slice that produces user-observable value.
+3. Use the TPM expert to evaluate ambiguous prompts and decompose complex problems when better planning materially improves delivery.
+4. Delegate only to specialists whose judgment materially changes the outcome.
+5. Use structured handoffs and progress updates instead of chatty status noise.
+6. Keep ephemeral run artifacts separate from reusable knowledge.
+
+Sprint closeout expectations:
+
+1. All relevant quality gates pass.
+2. All code and directly related documentation are committed.
+3. The thematic features of the sprint are demonstrated.
+4. The thematic features planned for the next sprint are presented.
 
 For bug and issue work, Subutai now includes a dedicated lifecycle:
 
@@ -138,7 +146,7 @@ questions. The versioning contract it should apply is:
 
 | Version | Use when | Examples in an APM package |
 | --- | --- | --- |
-| **Major** | The consumer-facing package contract changes incompatibly | Rename or remove specialist entrypoints, change staged workflow phases, break install layout, or substantially change default orchestrator behavior |
+| **Major** | The consumer-facing package contract changes incompatibly | Rename or remove specialist entrypoints, change staged workflow phases, break install layout, or substantially change default delivery-manager behavior |
 | **Minor** | You add backward-compatible capability | Add a new expert persona, add a new workflow, add a new target, or expand orchestration behavior compatibly |
 | **Patch** | You make backward-compatible fixes or clarifications | Refine instructions, fix routing or generated outputs, tighten wording, or update docs without changing the advertised package contract |
 
