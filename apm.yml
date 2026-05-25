@@ -1,14 +1,12 @@
 name: subutai
-version: 0.0.1
+version: 0.0.2
 description: APM project for subutai
 author: MatthewAPeters
-# Which agent platforms to deploy to.
-# Resolution order: --target flag > this field > auto-detect from filesystem.
-# Accepted values: copilot, claude, cursor, opencode, codex, gemini, windsurf, all
 targets:
 - copilot
 dependencies:
-  apm: []
+  apm:
+  - matthewapeters/subutai
   mcp: []
 includes: auto
 scripts: {}

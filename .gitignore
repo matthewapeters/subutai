@@ -33,3 +33,7 @@ go.work.sum
 
 # Subutai orchestration artifacts
 .subutai/runs/
+
+
+# APM dependencies
+apm_modules/
