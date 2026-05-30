@@ -1,12 +1,11 @@
 name: subutai
-version: 0.1.0
+version: 0.1.1
 description: APM project for subutai
 author: MatthewAPeters
 targets:
 - copilot
 dependencies:
-  apm:
-  - matthewapeters/subutai
+  apm: []
   mcp: []
 includes: auto
 scripts: {}
