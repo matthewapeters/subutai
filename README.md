@@ -4,12 +4,14 @@
 
 **subutai** is an APM package for GitHub Copilot that makes the default persona a **Senior Engineering Delivery Manager orchestrator**. Instead of behaving like a single undifferentiated assistant, it triages requests, drives work toward user-observable value, routes only the load-bearing parts to specialist agents, manages sequencing and parallel work, and then synthesizes the result back to the user.
 
+The package now also includes a selectable top-level agent named **`subutai`** so users can explicitly choose the orchestrator persona from the Copilot agent picker.
+
 The package implements orchestration as always-on instructions and keeps specialist deep work in explicit APM agents. The current specialist roster covers Go, Python, application architecture, software security, CI/CD, Linux automation, Senior Technical Program Management, APM package design and versioning, SDET, frontend, data and databases, SRE and observability, performance and scalability, API and integration design, plus a staged issue-workflow pack for tracked defect handling and a reusable-helper-script pattern for recurring automation tasks.
 
 Repository URLs:
 
-- https://github.com/matthewapeters/subutai
-- git@github.com:matthewapeters/subutai.git
+- <https://github.com/matthewapeters/subutai>
+- <git@github.com>:matthewapeters/subutai.git
 
 ## How it works
 
@@ -182,6 +184,11 @@ When Subutai has to create automation for its own work, it should treat recurrin
 - Prefer the registry before inventing a new general-purpose helper
 
 This is especially useful for reliability-oriented automation such as multiline file generation, quoting-safe content emission, or other cases where brittle shell one-liners tend to fail.
+
+### Choose the right agent
+
+- Pick **`subutai`** when you want orchestration: triage, sequencing, and specialist delegation managed end-to-end.
+- Pick a specialist directly when your task is already narrow and deep in one domain.
 
 ## Why the name?
 
