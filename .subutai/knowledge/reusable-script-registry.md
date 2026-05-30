@@ -11,7 +11,15 @@ This registry tracks curated helper scripts that Subutai agents should consider 
 
 ## Registered scripts
 
-No reusable scripts are registered yet.
+### `check-self-apm-dependency`
+
+- **Path:** `.subutai/tools/check-self-apm-dependency.sh`
+- **Purpose:** Detects a circular package dependency where `apm.yml` references `matthewapeters/<current-package-name>` inside `dependencies.apm`.
+- **Use when:** Validating package metadata in CI, pre-release checks, or after dependency edits.
+- **Inputs:** Optional path argument to an APM manifest; defaults to `apm.yml`.
+- **Outputs:** Writes a pass/fail status message; exits `0` on pass, `1` on detected cycle, `2` on invalid input.
+- **Language/runtime:** Bash.
+- **Last validated:** 2026-05-30 via local script execution and GitHub Actions workflow wiring.
 
 ## Entry template
 

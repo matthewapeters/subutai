@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a CI dependency guard and reusable script to fail fast if `apm.yml` includes a self-referential dependency in `dependencies.apm`.
 - Remove the self-referential `apm` dependency (`matthewapeters/subutai`) to eliminate circular dependency resolution and orphaned local package installs.
 - Add a selectable `subutai` orchestrator agent entrypoint so users can explicitly choose the Senior Engineering Delivery Manager role from Copilot agents.
 - Change the default persona to Senior Engineering Delivery Manager and add a dedicated `tpm-expert` specialist for decomposition and sprint shaping.
