@@ -34,6 +34,12 @@ go.work.sum
 # Subutai orchestration artifacts
 .subutai/runs/
 
+# Generated APM lock state is local-only and can self-reference during installs.
+apm.lock.yaml
+
+# Local build output from `apm pack`.
+build/
+
 
 # APM dependencies
 apm_modules/
